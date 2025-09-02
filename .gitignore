@@ -4,8 +4,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build output
-dist/
+# Build output (commented out because this package includes dist/ in published version)
+# dist/
 *.tsbuildinfo
 
 # IDE and editor files

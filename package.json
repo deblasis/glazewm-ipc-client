@@ -1,0 +1,54 @@
+{
+  "name": "@deblasis/glazewm-ipc-client",
+  "version": "0.1.0",
+  "description": "GlazeWM v3.x compatible IPC client for Node.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "glazewm",
+    "glazewm3",
+    "window-manager",
+    "ipc",
+    "websocket",
+    "typescript"
+  ],
+  "author": "Alessandro De Blasis <alex@deblasis.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deblasis/glazewm-ipc-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deblasis/glazewm-ipc-client/issues"
+  },
+  "homepage": "https://github.com/deblasis/glazewm-ipc-client#readme",
+  "dependencies": {
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/ws": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}

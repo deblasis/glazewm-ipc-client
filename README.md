@@ -224,10 +224,45 @@ try {
 }
 ```
 
+## Troubleshooting
+
+### Connection Issues
+
+**Issue**: "Stuck on connecting with no error or feedback whatsoever"
+
+This is a common issue that can occur when:
+
+1. **GlazeWM IPC is not enabled**: Ensure IPC is enabled in your GlazeWM configuration
+2. **Wrong IPC port**: The default port is `6123`, but you can specify a different port:
+   ```typescript
+   const client = new WmClient({ port: 6123 });
+   ```
+3. **GlazeWM not running**: Use the utility function to check:
+   ```typescript
+   const isRunning = await checkGlazeWMRunning();
+   ```
+4. **Firewall/antivirus blocking**: Ensure no security software is blocking the WebSocket connection
+5. **Timeout configuration**: Increase the timeout if needed:
+   ```typescript
+   const client = new WmClient({ timeout: 15000 }); // 15 seconds
+   ```
+
+**Debugging steps**:
+1. Verify GlazeWM is running: `tasklist | findstr glazewm`
+2. Check IPC port: Look for WebSocket server in GlazeWM logs
+3. Test direct connection: `await testDirectWebSocketConnection(6123)`
+
+### Common Error Messages
+
+- **"Connection timeout"**: Increase timeout or check if GlazeWM is running
+- **"WebSocket connection failed"**: Check port number and firewall settings
+- **"IPC server not responding"**: Ensure GlazeWM IPC is enabled in config
+
 ## Requirements
 
 - **Node.js**: >= 18.0.0
-- **GlazeWM**: v3.x with IPC enabled
+- **GlazeWM**: v3.9.1 (tested with this version)
+- **Library Version**: 1.7.0
 - **OS**: Windows (currently optimized for Windows, but WebSocket protocol should work cross-platform)
 
 ## Development
@@ -256,7 +291,16 @@ pnpm run clean
 
 ## Why This Package Exists
 
-The official `glazewm-js` package only supports GlazeWM v2.x and earlier. GlazeWM v3.x introduced breaking changes to the IPC protocol that made the existing client incompatible. This package implements the new protocol while maintaining a similar API for easy migration.
+The official `glazewm-js` package only supports GlazeWM v2.x and earlier. GlazeWM v3.x introduced breaking changes to the IPC protocol that made the existing client incompatible.
+
+### Problems This Package Solves
+
+- **Connection Issues**: Previous clients would get stuck connecting with no error feedback
+- **Protocol Compatibility**: Implements the new WebSocket-based IPC protocol for GlazeWM v3.x
+- **Better Error Handling**: Provides clear error messages and debugging utilities
+- **Event System**: Adds proper event subscription matching the official package API
+
+This package implements the new protocol while maintaining a similar API for easy migration from the official v2.x client.
 
 ## License
 

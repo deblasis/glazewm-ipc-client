@@ -291,7 +291,7 @@ pnpm run clean
 
 ## Why This Package Exists
 
-The official `glazewm-js` package only supports GlazeWM v2.x and earlier. GlazeWM v3.x introduced breaking changes to the IPC protocol that made the existing client incompatible.
+As far as I understand, as of today (2025-09-02), the official `glazewm-js` should support GlazeWM v3.x (see [glazewm-js/#14](https://github.com/glzr-io/glazewm-js/pull/14)) but I never managed to make it work. As you do, I didn't give up and quickly one-shotted this library.
 
 ### Problems This Package Solves
 
@@ -309,5 +309,5 @@ MIT License - see LICENSE file for details.
 ## Related Projects
 
 - [GlazeWM](https://github.com/glzr-io/glazewm) - The window manager
-- [glazewm-js](https://github.com/glzr-io/glazewm-js) - Official TypeScript client (v2.x only)
-- [glazewm-query](https://github.com/alessandrodblasis/glazewm-query) - CLI tool built on this client
+- [glazewm-js](https://github.com/glzr-io/glazewm-js) - Official TypeScript client
+
